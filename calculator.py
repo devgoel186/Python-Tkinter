@@ -7,7 +7,7 @@ e = Entry(root, width = 35, borderwidth = 5)
 e.grid(row = 0, column = 0, columnspan = 3, padx = 10, pady = 10)
 
 f_num = 0
-operator = ""
+operator = "-"
 
 def button_click(number):
     # e.delete(0, END)
