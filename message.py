@@ -20,6 +20,8 @@ def popup():
     # messagebox.showerror("This is my popup!", "Hello World")
     # messagebox.askquestion("This is my popup!", "Hello World")
     # messagebox.askokcancel("This is my popup!", "Hello World")
+
+    # askyesno - returns (0,1) ; askokcancel - returns (0,1) ; askquestion - returns ("yes","no")
     response = messagebox.askyesno("This is my popup!", "Hello World")
     Label(root, text=response).pack()
     if response == 1:
