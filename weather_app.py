@@ -12,6 +12,7 @@ from ttkthemes import ThemedTk
 
 root = ThemedTk(theme="adapta")
 root.configure(bg="white", padx=20, pady=20)
+root.iconbitmap("./src/weather.ico")
 root.title("Weather App")
 
 ttk.Label(root, text="Enter City Name : ").grid(row=0, column=0)
