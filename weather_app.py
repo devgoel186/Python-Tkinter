@@ -5,27 +5,29 @@ from io import BytesIO
 import json
 import config
 
-root = Tk()
+from tkinter import ttk  # Normal Tkinter.* widgets are not themed!
+from ttkthemes import ThemedTk
+
+# ttk.Button(window, text="Quit", command=window.destroy).pack()
+
+root = ThemedTk(theme="adapta")
+root.configure(bg="white", padx=20, pady=20)
 root.title("Weather App")
 
-Label(root, text="Enter City Name : ").grid(row=0, column=0)
-city = Entry(root, width=20, bg="#e3d3c2", borderwidth=4,
-             cursor="dot", font="family=Helvetica")
+ttk.Label(root, text="Enter City Name : ").grid(row=0, column=0)
+city = ttk.Entry(root, width=20, justify=CENTER)
 city.grid(row=0, column=1)
 
-Label(root, text="Enter State Name : ").grid(row=1, column=0)
-state = Entry(root, width=20, bg="#e3d3c2", borderwidth=4,
-              cursor="dot", font="family=Helvetica")
+ttk.Label(root, text="Enter State Name : ").grid(row=1, column=0)
+state = ttk.Entry(root, width=20, justify=CENTER)
 state.grid(row=1, column=1)
 
-Label(root, text="Enter Country Name : ").grid(row=2, column=0)
-country = Entry(root, width=20, bg="#e3d3c2", borderwidth=4,
-                cursor="dot", font="family=Helvetica")
+ttk.Label(root, text="Enter Country Name : ").grid(row=2, column=0)
+country = ttk.Entry(root, width=20, justify=CENTER)
 country.grid(row=2, column=1)
-data_frame = LabelFrame(root, text="Current Weather",
-                        borderwidth=4, font="family=Helvetica")
-img_frame = LabelFrame(root, text="Weather Icon",
-                       borderwidth=4, font="family=Helvetica")
+data_frame = LabelFrame(
+    root, text="Current Weather")
+img_frame = LabelFrame(root, text="Weather Icon")
 
 data_frame.grid(row=3, column=0, columnspan=2)
 img_frame.grid(row=4, column=0, columnspan=2)
@@ -46,9 +48,9 @@ def getData():
 
     # Build and pack frames
     data_frame = LabelFrame(root, text="Current Weather",
-                            borderwidth=4, font="family=Helvetica")
+                            borderwidth=4, bg="white", font="Helvetica")
     img_frame = LabelFrame(root, text="Weather Icon",
-                           borderwidth=4, font="family=Helvetica")
+                           borderwidth=4, bg="white", font="Helvetica")
     data_frame.grid(row=4, column=0, columnspan=2, padx=20, pady=20)
     img_frame.grid(row=5, column=0, columnspan=2, padx=20, pady=20)
 
@@ -62,25 +64,25 @@ def getData():
     # Get Image from Weather Codes API
     img = getImage(api)
 
-    Label(data_frame, text="CITY : " + api["data"]["city"] +
-          "\nSTATE : " + api["data"]["state"] +
-          "\nCOUNTRY : " + api["data"]["country"] +
-          "\nTEMPERATURE (in " + u"\N{DEGREE SIGN}" + "C) : " +
-          str(api["data"]["current"]["weather"]["tp"]) +
-          "\nATMOSPHERIC PRESSURE (in hPa) : " +
-          str(api["data"]["current"]["weather"]["pr"]) +
-          "\nHUMIDITY : " +
-          str(api["data"]["current"]["weather"]["hu"]) +
-          "\nWIND SPEED (in m/s) : " +
-          str(api["data"]["current"]["weather"]["ws"]) +
-          "\nWIND DIRECTION : " +
-          str(api["data"]["current"]["weather"]["wd"]) + u"\N{DEGREE SIGN}", anchor=W).pack()
-    Label(img_frame, text="WEATHER ICON CODE : " +
-          str(api["data"]["current"]["weather"]["ic"])).pack()
-    Label(img_frame, image=img).pack()
+    ttk.Label(data_frame, text="CITY : " + api["data"]["city"] +
+              "\nSTATE : " + api["data"]["state"] +
+              "\nCOUNTRY : " + api["data"]["country"] +
+              "\nTEMPERATURE (in " + u"\N{DEGREE SIGN}" + "C) : " +
+              str(api["data"]["current"]["weather"]["tp"]) +
+              "\nATMOSPHERIC PRESSURE (in hPa) : " +
+              str(api["data"]["current"]["weather"]["pr"]) +
+              "\nHUMIDITY : " +
+              str(api["data"]["current"]["weather"]["hu"]) +
+              "\nWIND SPEED (in m/s) : " +
+              str(api["data"]["current"]["weather"]["ws"]) +
+              "\nWIND DIRECTION : " +
+              str(api["data"]["current"]["weather"]["wd"]) + u"\N{DEGREE SIGN}", anchor=W).pack()
+    ttk.Label(img_frame, text="WEATHER ICON CODE : " +
+              str(api["data"]["current"]["weather"]["ic"])).pack()
+    ttk.Label(img_frame, image=img).pack()
 
 
-Button(root, text="Get Data", width=20,
-       relief="groove", command=getData).grid(row=3, column=0, columnspan=2, pady=20)
+ttk.Button(root, text="Get Data", width=20, command=getData).grid(
+    row=3, column=0, columnspan=2, pady=20)
 
 mainloop()
