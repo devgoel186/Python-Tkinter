@@ -56,7 +56,7 @@ def getData():
     img_frame.grid(row=5, column=0, columnspan=2, padx=20, pady=20)
 
     api_request = requests.get(
-        "http://api.airvisual.com/v2/city?city=" + city.get() + "&state=" + state.get() + "&country=" + country.get() + "&key=" + config.api_key)
+        "http://api.airvisual.com/v2/city?city=" + city.get() + "&state=" + state.get() + "&country=" + country.get() + "&key=" + "a88b586b-23c1-4165-b61a-cc13efff36ab")
     try:
         api = json.loads(api_request.content)
     except Exception as e:
