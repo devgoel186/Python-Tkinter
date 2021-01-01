@@ -6,7 +6,7 @@ Understanding Python's Tkinter to build GUIs.
 
 - All `.py` files are codes for different available functionalities of Python's Tkinter module
 - `src` folder contains images and icons for the codes and applications
-- **weather_app.exe** is a 'Live Weather App', the instructions for running which are given below :
+- **weather_app.exe** is a **'Live Weather App'**, the instructions for running which are given below :
 
 ## Instructions for running weather_app
 
@@ -17,4 +17,4 @@ Understanding Python's Tkinter to build GUIs.
 
 `pip install tkinter Pillow requests ttkthemes`
 
-- Run the weather_app.exe in the dowloaded directory's root.
+- Run the **weather_app.exe** in the dowloaded directory's root.
